@@ -2,7 +2,7 @@ require 'time'
 
 module TimeLogic
 
-  def final_results(input)
+  def results(input)
     if is_input_valid?(input)
        is_timestamp?(input) ? answer_for_timestamp(input) : answer_for_date(input) 
     else 
@@ -38,8 +38,8 @@ module TimeLogic
       string.scan(/\D/).empty?
     end
 
-    def convert_to_int(data)
-      data.to_i
+    def convert_to_int(string)
+      string.to_i
     end
 
     def convert_to_time(data)
@@ -59,9 +59,9 @@ module TimeLogic
     end
 
     def convert_date_to_timestamp(string)
-      epoch = Date.new(1970,1,1)
+      _epoch = Date.new(1970,1,1)
 
-      convert_to_int((convert_to_time(string) - convert_to_time(epoch))) 
+      convert_to_int((convert_to_time(string) - convert_to_time(_epoch)))
     end
 
     def nil_hash
